@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Portfolio Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <h1>Portfolio Overview</h1>
+                <p class="subtitle">Binance Spot Account</p>
+            </div>
+            <button id="refreshBtn" class="refresh-btn">
+                <span class="btn-text">Refresh Data</span>
+                <div class="loader-spinner" style="display: none;"></div>
+            </button>
+        </header>
+
+        <section class="summary-section">
+            <div class="card total-value-card">
+                <h3>Total Value</h3>
+                <div class="value-display">
+                    <span id="totalValue">$0.00</span>
+                </div>
+                <div class="vnd-display" id="totalValueVnd">≈ 0 ₫</div>
+                
+                <div class="pnl-display" id="totalPnlDisplay">
+                    <span id="totalPnl">$0.00</span> (<span id="totalPnlPercentage">0.00%</span>)
+                </div>
+                <div class="vnd-display pnl-vnd" id="totalPnlVnd">≈ 0 ₫</div>
+            </div>
+            
+            <div class="card chart-card">
+                <canvas id="portfolioChart"></canvas>
+            </div>
+        </section>
+
+        <section class="assets-section">
+            <h2>Your Assets</h2>
+            <div class="table-container">
+                <table id="assetsTable">
+                    <thead>
+                        <tr>
+                            <th>Asset</th>
+                            <th class="right-align">Amount</th>
+                            <th class="right-align">Avg Price</th>
+                            <th class="right-align">Current Price</th>
+                            <th class="right-align">Total Value</th>
+                            <th class="right-align">P&L ($)</th>
+                            <th class="right-align">P&L (%)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="assetsTableBody">
+                        <tr>
+                            <td colspan="7" class="empty-state">No data loaded yet. Click refresh.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        
+        <div id="errorMessage" class="error-message" style="display: none;"></div>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
